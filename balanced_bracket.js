@@ -1,11 +1,37 @@
 var g_temp=[];
+var g_status = true;
+var arrTemp = [];
+
 function isBalance(prmInput){
+    g_temp=[];
+    g_status = true;
+    arrTemp = [];
     prmInput = prmInput.replaceAll(' ', '');
-    // return 'Yes';
     if(prmInput.length % 2 == 1 || (prmInput[0] == '}' || prmInput[0] == ')' ||prmInput[0] == ']') ){
         return 'No';
     }
-    var arrTemp = [];
+    createArrTemp(prmInput);
+    // hitungArrSisa(arrTemp);
+    do {
+        var sisaInput = '';
+        for(var l = 0; l < g_temp.length; l++){
+            sisaInput += g_temp[l];
+        }
+        createArrTemp(sisaInput);
+        hitungArrSisa(g_temp);
+    } while (g_temp.length > 1);
+    return g_status ? 'Yes' : 'No';
+
+}
+
+function cekBalance(prmSatu, prmDua){
+    if(!(prmSatu == '{' && prmDua == '}') && !(prmSatu == '(' && prmDua == ')') && !(prmSatu == '[' && prmDua == ']')){
+        return false;
+    }
+    return true;
+}
+function createArrTemp(prmInput){
+    arrTemp = [];
     var temp = '';
     var indexTemp=0;
     for(var i = 0; i < prmInput.length; i++){
@@ -33,30 +59,11 @@ function isBalance(prmInput){
             arrTemp[indexTemp]=temp;
         }
     }
-    // console.log(arrTemp);
-    var arrSisa = hitungArrSisa(arrTemp);
-    // console.log(arrSisa);
-    // arrSisa = hitungArrSisa(arrSisa[1]);
-    // console.log(arrSisa);
-    do {
-        hitungArrSisa(g_temp);
-    } while (g_temp.length > 1);
-    // console.log('asd');
-    return 'Yes';
-
-}
-
-function cekBalance(prmSatu, prmDua){
-    if(!(prmSatu == '{' && prmDua == '}') && !(prmSatu == '(' && prmDua == ')') && !(prmSatu == '[' && prmDua == ']')){
-        return false;
-    }
-    return true;
+    g_temp = arrTemp;
 }
 
 function hitungArrSisa(arrTemp){
-    // console.log(arrTemp);
     if(arrTemp[0].length == 0){
-        // return 'asd';
         return [true, arrTemp];
     }
     var arrSisa = [];
@@ -82,27 +89,25 @@ function hitungArrSisa(arrTemp){
             var iter = 0;
             for(var k = b.length; k > 0; k--){
                 if(boolOpener){
-                    // console.log(b[b.length - k]+ " - " + a[k]);
-                    if(!cekBalance(a[k], b[b.length - k])){
-                        return [false, arrTemp];
+                    if(!cekBalance(a[a.length - b.length -1 + k], b[b.length - k])){
+                        g_status = false;
                     }
-
+                    
                 }else{
-                    // console.log(b[k-1]+ " - " + a[iter]);
                     if(!cekBalance(b[k-1], a[iter])){
-                        return [false, arrTemp];
+                        g_status = false;
                     }
                 }
                 iter++;
             }
         }
     }
-    // console.log(arrSisa);
     g_temp = arrSisa;
-    // return [true, arrSisa];
 }
 
+// Contoh penggunaan:
 var input = '{(([]))(([]))}';
-// var input = '{}';
-console.log(`Output : ${isBalance(input)}`);
-// console.log(cekBalance("(", ")"));
+// console.log(`Output : ${isBalance(input)}`);
+console.log(`Output : ${isBalance("{ [ ( ) ] }")}`);
+console.log(`Output : ${isBalance("{ [ ( ] ) }")}`);
+console.log(`Output : ${isBalance("{ ( ( [ ] ) [ ] ) [ ] }")}`);
