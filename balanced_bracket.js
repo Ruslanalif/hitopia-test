@@ -111,3 +111,4 @@ var input = '{(([]))(([]))}';
 console.log(`Output : ${isBalance("{ [ ( ) ] }")}`);
 console.log(`Output : ${isBalance("{ [ ( ] ) }")}`);
 console.log(`Output : ${isBalance("{ ( ( [ ] ) [ ] ) [ ] }")}`);
+console.log(`Output : ${isBalance("{ ( ( [ ] ) [ ] ) [ ] }")}`);
