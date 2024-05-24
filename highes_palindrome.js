@@ -4,8 +4,6 @@ var iterArr = 0;
 var iterData = 0;
 var nilailength;
 var palindrome2;
-var isLengthGenap = false;
-var highesData = 0;
 var setengahLength = 0;
 var fullLength = 0;
 var a = '', z = '';
@@ -29,10 +27,7 @@ function highesPalindrome(nilaiawal, k) {
             arrTemp[iterArr] = nilaiawal[0];
         }
         if(tempK > 1){
-            palindrome2 = '';
-            for(var l = 0; l < arrTemp.length; l++){
-                palindrome2 += arrTemp[l];
-            }
+            palindrome2 = arrTemp.join("");
             return highesPalindrome2(palindrome2, tempK);
         }else if(tempK == 1){
             if(arrData.length > 0){
@@ -48,15 +43,11 @@ function highesPalindrome(nilaiawal, k) {
                 tempK--;
             }
         }
-        // console.log(arrTemp);
         return arrTemp.join("");
     }
     a = nilaiawal[0];
     z = nilaiawal[nilailength-1];
-    // console.log(`nilai a : ${a}`);
-    // console.log(`nilai z : ${z}`);
     if(a == z){
-        // arrTemp[0] = a;
         arrTemp[iterArr] = a;
         arrTemp[fullLength - 1 - iterArr] = z;
         iterArr++;
@@ -71,7 +62,6 @@ function highesPalindrome(nilaiawal, k) {
                 arrData[iterData] = [iterArr, fullLength - 1 - iterArr];
                 iterData++;
             }
-            console.log(arrData);
             arrTemp[iterArr] = a;
             arrTemp[fullLength - 1 - iterArr] = z;
             iterArr++;
@@ -83,18 +73,14 @@ function highesPalindrome(nilaiawal, k) {
     if(nilailength > 1){
         sisaNilai = nilaiawal.slice(1, -1);
     }
-    // console.log(arrTemp);
-    // console.log();
-    // console.log(tempK);
-    
-    // if(nilailength % 2 == 0){
-    // }else{
-    // }
-    // Kasus Basis
-    // return 1;
+
     setengahLength--;
     if (setengahLength <= 0) {
-        return 1;
+        if(tempK > 1){
+            palindrome2 = arrTemp.join("");
+            return highesPalindrome2(palindrome2, tempK);
+        }
+        return arrTemp.join("");
     }
     // Langkah Rekursif
     return highesPalindrome(sisaNilai, tempK);
@@ -115,7 +101,6 @@ function highesPalindrome2(nilaiawal, k){
 
         if(tempK >= 1){
             if(nilailength == 1){
-                // console.log(`masuk sini ${iterArr}`) ;
                 if(arrData.length > 0){
                     arrTemp[arrData[0][0]] = '9';
                     arrTemp[arrData[0][1]] = '9';
@@ -131,17 +116,17 @@ function highesPalindrome2(nilaiawal, k){
     }
     a = nilaiawal[0];
     z = nilaiawal[nilailength-1];
-    console.log(`nilai a : ${a}`);
-    console.log(`nilai z : ${z}`);
     if(a != '9'){
         if(tempK > 1){
             arrTemp[iterArr] = '9';
             arrTemp[fullLength - 1 - iterArr] = '9';
-            if(iterArr == arrData[0][0]){
-                tempK = tempK - 2;
-                arrData.slice();
-            }else{
-                tempK = tempK - 2;
+            if(arrData.length > 0){
+                if(iterArr == arrData[0][0]){
+                    tempK = tempK--;
+                    arrData.slice();
+                }else{
+                    tempK = tempK - 2;
+                }
             }
         }else{
             if(setengahLength % 2 == 0){
@@ -152,32 +137,24 @@ function highesPalindrome2(nilaiawal, k){
         }
     }
     iterArr++;
-    console.log(`nilai awal ${nilaiawal}`);
     if(nilailength > 1){
         sisaNilai = nilaiawal.slice(1, -1);
     }
-    console.log(arrTemp);
-    console.log(tempK);
-    
-    // if(nilailength % 2 == 0){
-    // }else{
-    // }
-    // Kasus Basis
-    // return 1;
     setengahLength--;
     if (setengahLength <= 0) {
-        return 1;
+        return arrTemp.join("");
     }
     // Langkah Rekursif
     return highesPalindrome2(sisaNilai, k);
 }
-// function createResult(){
-//     // return arrTemp.join("");
-//     var result = '';
-//     for(var l = 0; l < arrTemp.length; l++){
-//         result += arrTemp[l];
-//     }
-//     return result;
-// }
 
-console.log('Output : ' + highesPalindrome('35343', '5'));
+
+// Contoh penggunaan:
+// var input = ['3943', '1'];
+// var input = ['932239', '2'];
+// var input = ['35343', '2'];
+// var input = ['35343', '3'];
+console.log('==========================================');
+console.log(`Input : ${input[0]}, ${input[1]}`);
+console.log('Output : ' + highesPalindrome(input[0], input[1]));
+console.log('==========================================');
