@@ -83,6 +83,7 @@ function highesPalindrome(nilaiawal, k) {
         return arrTemp.join("");
     }
     // Langkah Rekursif
+    console.log(sisaNilai + ' ' + tempK);
     return highesPalindrome(sisaNilai, tempK);
 }
 
@@ -98,7 +99,6 @@ function highesPalindrome2(nilaiawal, k){
         }
     }
     if (nilailength <= 1){
-
         if(tempK >= 1){
             if(nilailength == 1){
                 if(arrData.length > 0){
@@ -117,17 +117,19 @@ function highesPalindrome2(nilaiawal, k){
     a = nilaiawal[0];
     z = nilaiawal[nilailength-1];
     if(a != '9'){
-        if(tempK > 1){
+        console.log('masuk sini ' + tempK);
+        if(tempK >= 1){
+
+            console.log(a);
             arrTemp[iterArr] = '9';
             arrTemp[fullLength - 1 - iterArr] = '9';
-            if(arrData.length > 0){
                 if(iterArr == arrData[0][0]){
-                    tempK = tempK--;
+                    tempK--;
                     arrData.slice();
                 }else{
                     tempK = tempK - 2;
                 }
-            }
+            
         }else{
             if(setengahLength % 2 == 0){
                 arrTemp[setengahLength -1] = '9';
@@ -145,6 +147,8 @@ function highesPalindrome2(nilaiawal, k){
         return arrTemp.join("");
     }
     // Langkah Rekursif
+    console.log(sisaNilai, tempK);
+    
     return highesPalindrome2(sisaNilai, k);
 }
 
@@ -153,7 +157,7 @@ function highesPalindrome2(nilaiawal, k){
 // var input = ['3943', '1'];
 // var input = ['932239', '2'];
 // var input = ['35343', '2'];
-var input = ['35343', '3'];
+var input = ['35343', '4'];
 console.log('==========================================');
 console.log(`Input : ${input[0]}, ${input[1]}`);
 console.log('Output : ' + highesPalindrome(input[0], input[1]));

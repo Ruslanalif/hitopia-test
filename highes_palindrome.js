@@ -117,7 +117,7 @@ function highesPalindrome2(nilaiawal, k){
     a = nilaiawal[0];
     z = nilaiawal[nilailength-1];
     if(a != '9'){
-        if(tempK > 1){
+        if(tempK >= 1){
             arrTemp[iterArr] = '9';
             arrTemp[fullLength - 1 - iterArr] = '9';
             if(arrData.length > 0){
