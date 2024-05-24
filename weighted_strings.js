@@ -39,9 +39,16 @@ function weightedStrings(strInput, arrQueries) {
 // Contoh penggunaan:
 const strInput = "abbcccd";
 const arrQueries = [1,3,9,8];
-const substrings = weightedStrings(strInput, arrQueries);
-console.log("Output : ", substrings);
+var input1 = ["abbcccd", [1,3,9,8]];
+var input2 = ["bbccc", [3,6,7,9]];
+var input3 = ["gghiiijk", [8,9,12,15]];
+
+console.log("Intput : ", input1);
+console.log("Output : ", weightedStrings(input1[0], input1[1]));
 console.log('==========================================');
-console.log(weightedStrings('bbccc', [3,6,7,9]));
+console.log("Intput : ", input2);
+console.log("Output : ", weightedStrings(input2[0], input2[1]));
 console.log('==========================================');
-console.log(weightedStrings('gghiiijk', [8,9,12,15]));
+console.log("Intput : ", input3);
+console.log("Output : ", weightedStrings(input3[0], input3[1]));
+console.log('==========================================');

@@ -108,7 +108,15 @@ function hitungArrSisa(arrTemp){
 // Contoh penggunaan:
 var input = '{(([]))(([]))}';
 // console.log(`Output : ${isBalance(input)}`);
+console.log(`Intput : "{ [ ( ) ] }"`);
 console.log(`Output : ${isBalance("{ [ ( ) ] }")}`);
+console.log('==========================================');
+console.log(`Intput : "{ [ ( ] ) }"`);
 console.log(`Output : ${isBalance("{ [ ( ] ) }")}`);
+console.log('==========================================');
+console.log(`Intput : "{ ( ( [ ] ) [ ] ) [ ] }"`);
 console.log(`Output : ${isBalance("{ ( ( [ ] ) [ ] ) [ ] }")}`);
+console.log('==========================================');
+console.log(`Intput : "{ ( ( [ ] ) [ ] ) [ ] }"`);
 console.log(`Output : ${isBalance("{ ( ( [ ] ) [ ] ) [ ] }")}`);
+console.log('==========================================');

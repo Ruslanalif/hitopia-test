@@ -150,10 +150,11 @@ function highesPalindrome2(nilaiawal, k){
 
 
 // Contoh penggunaan:
-var input = ['3943', '1'];
+// var input = ['3943', '1'];
 // var input = ['932239', '2'];
 // var input = ['35343', '2'];
 // var input = ['35343', '3'];
+var input = ['35343', '4'];
 console.log('==========================================');
 console.log(`Input : ${input[0]}, ${input[1]}`);
 console.log('Output : ' + highesPalindrome(input[0], input[1]));
