@@ -150,7 +150,7 @@ function highesPalindrome2(nilaiawal, k){
 
 
 // Contoh penggunaan:
-// var input = ['3943', '1'];
+var input = ['3943', '1'];
 // var input = ['932239', '2'];
 // var input = ['35343', '2'];
 // var input = ['35343', '3'];
