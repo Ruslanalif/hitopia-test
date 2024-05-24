@@ -41,3 +41,7 @@ const strInput = "abbcccd";
 const arrQueries = [1,3,9,8];
 const substrings = weightedStrings(strInput, arrQueries);
 console.log("Output : ", substrings);
+console.log('==========================================');
+console.log(weightedStrings('bbccc', [3,6,7,9]));
+console.log('==========================================');
+console.log(weightedStrings('gghiiijk', [8,9,12,15]));
